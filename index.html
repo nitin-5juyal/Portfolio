@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="script.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+     crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<style>
+  /* hero img floating  */
+
+   @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-30px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+    .float {
+      animation: float 3s ease-in-out infinite;
+    }
+    /********** hover fill on card *************/
+    .hover-fill {
+                position: relative;
+                overflow: hidden;
+            }
+    
+            .hover-fill::after {
+                content: '';
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #8A49F5; /* Tomato color with some opacity */
+                transition: top 0.5s ease;
+                z-index: -1;
+            }
+    
+            .hover-fill:hover::after {
+                top: 0;
+            }
+
+        .hover-fill:hover h1,
+        .hover-fill:hover a,
+        .hover-fill:hover i {
+            color: white;
+        }
+        .hover-fill:hover p{
+           color: rgb(220, 213, 213);
+        }
+        .hover-fill:hover #hire{
+           background-color: white;
+            color: rgb(28, 31, 33);
+        }
+  /* Custom scrollbar styles */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;    
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #a0aec0; /* Customize the scrollbar thumb color */
+    border-radius: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background-color: #e2e8f0; /* Customize the scrollbar track color */
+  }
+</style>
+
+  </head>
+  <body class="font-roboto dark:bg-gray-950">
+
+    <nav class="bg-white dark:bg-black w-full h-12 md:flex md:items-center md:justify-around flex  items-center justify-between p-3 sticky top-0 z-50">
+      <div class="font-bold text-slate-900 dark:text-white md:text-3xl text-2xl cursor-pointer font-roboto">
+        Port-folio
+      </div>
+
+      <ul id="list" class="md:flex gap-10 text-gray-900 dark:text-white font-semibold hidden font-roboto">
+        <li><a class="text-purple-800 inline-block transition duration-300 ease-in-out transform hover:scale-105" href="#hero">Home</a></li>
+        <li><a class="hover:text-purple-800 inline-block transition duration-300 ease-in-out transform hover:scale-105" href="#about">About</a></li>
+        <li><a class="hover:text-purple-800 inline-block transition duration-300 ease-in-out transform hover:scale-105" href="#project">Project</a></li>
+        <li><a class="hover:text-purple-800 inline-block transition duration-300 ease-in-out transform hover:scale-105" href="#contact">Contact</a></li>
+      </ul>
+
+      <div id="menu" class="flex gap-5" >
+        <button id="darkmodeButton" class="h-8 w-8 rounded-full bg-gray-300 font-extrabold transition duration-300 ease-in-out transform hover:scale-105 " onclick="toggleDarkMode()">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button class="text-2xl md:hidden block dark:text-white" onclick="menuBar()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+      <div id="nav-log" class="hidden fixed z-10 md:hidden bg-white dark:bg-slate-950  inset-0">
+        <div class="flex justify-between items-center p-3  w-full h-12">
+          <a class="font-semibold dark:text-gray-300 text-2xl " href="#">Port-folio</a>
+
+          <button class="text-2xl dark:text-gray-300 inline-block transition duration-300 ease-in-out transform hover:scale-105" onclick="menuBar()">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <ul class="px-3 py-8 flex flex-col dark:text-white gap-10 font-semibold">
+          <li>
+            <a class=" hover:bg-gray-100 dark:hover:bg-slate-600 py-3 rounded-lg block" href="#hero">Home</a>
+          </li>
+          <li>
+            <a class=" hover:bg-gray-100 dark:hover:bg-slate-600 py-3 rounded-lg block" href="#about">About</a>
+          </li>
+          <li>
+            <a class=" hover:bg-gray-100 dark:hover:bg-slate-600 py-3 rounded-lg block" href="#project">Skill</a>
+          </li>
+          <li>
+            <a class=" hover:bg-gray-100 dark:hover:bg-slate-600 py-3 rounded-lg block" href="#contact">Contact</a>
+          </li>
+        </ul>
+
+      </div>
+    </nav>
+
+    <!-- hero section  -->
+
+    <section  id="hero" class="h-screen w-full  dark:bg-gray-950 dark:text-white flex flex-col-reverse  md:flex-row items-center justify-around">
+      <div class="md:text-5xl text-3xl   text-slate-950  font-semibold flex flex-col gap-3 pl-5 ">
+        <div>
+          <h1 class="dark:text-white">Hello I'am</h1>
+       </div>
+       <div>
+        <span id="element" class="text-purple-700"></span>
+       </div>
+       <div id="text-info">
+        <p class="text-base text-slate-600 md:hidden dark:text-gray-300">My name is Nitin I'am a web developer with no experience but pasioniate to do work with you. </p>
+        <p class="text-base text-slate-600 hidden md:block dark:text-gray-300">My name is Nitin I'am a web developer with no experience but pasioniate <br> to do work with you. </p>
+
+       </div>
+          
+       <div id="btn" class="text-white text-base flex items-start gap-10 mb-5">
+        <a class="p-2 px-5 bg-purple-600 rounded-lg inline-block transition duration-300 ease-in-out transform hover:scale-105" href="mailto:nitinjuyal@gmail.com">Hire Me</a>
+        <a class="p-2 px-5 bg-purple-600 rounded-lg inline-block transition duration-300 ease-in-out transform hover:scale-105" href="/public/Nitin-resume.jpg" download="resume">
+          Download CV
+          <i class="fa-regular fa-file-lines text-sm text-center pl-2"></i>
+        </a>
+      </div>
+        <div id="social-icon" class="text-sm flex  gap-8">
+          <a class="h-8 w-8 hover:text-purple-800  flex items-center justify-center rounded-full drop-shadow-purple bg-white font-extrabold cursor-pointer  transition duration-300 ease-in-out transform hover:scale-105 " href="https://www.instagram.com/juyal791/?igsh=NGVhN2U2NjQ0Yg%3D%3D">
+            <i class="fa-brands fa-instagram "></i>
+          </a> 
+          <a class="h-8 w-8 hover:text-purple-800 flex items-center justify-center rounded-full drop-shadow-purple bg-white font-extrabold cursor-pointer  transition duration-300 ease-in-out transform hover:scale-105" href="https://www.linkedin.com/in/nitin-juyal-480455n/">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+           <a class="h-8 w-8 hover:text-purple-800 flex items-center justify-center rounded-full drop-shadow-purple bg-white font-extrabold cursor-pointer  transition duration-300 ease-in-out transform hover:scale-105" href="https://github.com/nitin-5juyal">
+            <i class="fa-brands fa-github"></i>
+          </a>
+           <a class="h-8 w-8 hover:text-purple-800 flex items-center justify-center rounded-full drop-shadow-purple bg-white font-extrabold cursor-pointer  transition duration-300 ease-in-out transform hover:scale-105" href="https://x.com/NitinJuyal53882">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <img id="featured-img"
+          class="md:h-screen h-52 w-full   object-cover float "
+          src="/public/hero-img.png"
+          alt="hero-img"
+        />
+      </div>
+    </section>
+   
+    <!-- about section design -->
+
+     <section id="about" class="h-screen">
+      <h1 id="top-header" class="text-xl font-semibold font-sans text-center dark:text-white">About</h1>
+      <div id="about-info" class="flex items-center justify-around h-full flex-col md:flex-row m-2">
+
+        <div class="bg-white  h-64 w-full md:w-custom  drop-shadow-lg  dark:bg-slate-950 rounded-2xl dark:border-white dark:border-solid dark:border-2 hover-fill">
+          <div class="h-20 w-20 rounded-full bg-white ml-2 mt-2 drop-shadow-xl overflow-hidden "><img src="/public/logo.png" alt="profile img" class="h-full w-full object-cover"></div>
+          <h1 class="text-slate-900 text-3xl p-5 font-bold dark:text-gray-200">web developer</h1>
+          <p class="text-slate-900 font-medium text-xs pl-5 dark:text-gray-400">My name is Nitin I'am a web developer with no experience but pasioniate to do work with you.</p>
+          <div class=" w-full flex items-center justify-center text-center pt-2">
+            <a id="hire" class="px-2 py-1 bg-purple-600 rounded-2xl text-sm font-semibold text-white transition duration-300 ease-in-out transform hover:scale-105 " href="">Hire Me</a>
+          </div>
+
+        </div>
+
+<!-- skill box  -->
+
+        <div id="skill" class="bg-white h-64 w-full md:w-custom  drop-shadow-lg overflow-auto scroll-smooth custom-scrollbar rounded-2xl  dark:bg-slate-950  dark:border-white dark:border-solid dark:border-2">
+         
+         <div id="skill-box">
+           <div class="flex justify-between items-center p-2 text-xs font-semibold">
+            <span class="dark:text-gray-300">HTML</span> <span class="bg-purple-600 rounded-lg px-2 text-white">80%</span>
+           </div>
+           <div class="h-2 w-11/12 bg-gray-300 rounded-lg m-2 ">
+            <div class="h-2 w-3/4 bg-purple-600 rounded-lg"></div>
+           </div>
+         </div>
+          <div id="skill-box">
+            <div class="flex justify-between items-center p-2 text-xs font-semibold">
+              <span class="dark:text-gray-300">CSS</span> <span class="bg-purple-600 rounded-lg px-2 text-white">65%</span>
+            </div>
+            <div class="h-2 w-11/12 bg-gray-300 rounded-lg m-2">
+              <div class="h-2 w-2/3 bg-purple-600 rounded-lg"></div>
+            </div>
+          </div>
+         <div id="skill-box">
+           <div class="flex justify-between items-center p-2 text-xs font-semibold">
+            <span class="dark:text-gray-300">BootStrap</span> <span class="bg-purple-600 rounded-lg px-2 text-white">58%</span>
+           </div>
+           <div class="h-2 w-11/12 bg-gray-300 rounded-lg m-2">
+             <div class="h-2 w-7/12 bg-purple-600 rounded-lg"></div>
+           </div>
+         </div>
+         <div id="skill-box">
+           <div class="flex justify-between items-center p-2 text-xs font-semibold">
+            <span class="dark:text-gray-300">Tailwind</span> <span class="bg-purple-600 rounded-lg px-2 text-white">76%</span>
+           </div>
+           <div class="h-2 w-11/12 bg-gray-300 rounded-lg m-2">
+            <div class="h-2 w-3/4 bg-purple-600 rounded-lg"></div>
+           </div>
+         </div>
+          <div id="skill-box">
+            <div class="flex justify-between items-center p-2 text-xs font-semibold">
+              <span class="dark:text-gray-300">javascript</span> <span class="bg-purple-600 rounded-lg px-2 text-white">40%</span>
+            </div>
+            <div class="h-2 w-11/12 bg-gray-300 rounded-lg m-2">
+              <div class="h-2 w-2/5 bg-purple-600 rounded-lg"></div>
+            </div>
+          </div>
+         <div id="skill-box">
+           <div class="flex justify-between items-center p-2 text-xs font-semibold">
+             <span class="dark:text-gray-300">React JS</span> <span class="bg-purple-600 rounded-lg px-2 text-white">40%</span>
+           </div>
+           <div class="h-2 w-11/12 bg-gray-300 rounded-lg m-2">
+            <div class="h-2 w-2/5 bg-purple-600 rounded-lg"></div>
+           </div>
+         </div>
+        </div>
+
+      </div>
+    </section>
+
+<!-------------project section--------------->
+
+<section id="project" class="h-screen">
+
+<h1 id="top-header" class="text-center text-2xl font-medium dark:text-white">Projects</h1>
+
+<div class="flex items-center h-full justify-around bg-transparent drop-shadow-lg flex-wrap ">
+
+  <div id="project-box" class="flex flex-col h-52 md:w-72 w-full m-2 bg-white dark:bg-slate-950 drop-shadow-xl justify-center rounded-2xl items-center gap-5 dark:border-white dark:border-solid dark:border-2 hover-fill">
+    <i class="fa-solid fa-briefcase text-5xl  text-purple-600"></i>
+    <h1 class="text-xl font-semibold dark:text-gray-200 text-slate-700">Compeleted</h1>
+    <p class="text-gray-600 dark:text-gray-400">10+ projects finished</p>
+  </div>
+
+  <div id="project-box" class="flex flex-col h-52 md:w-72 w-full m-2 bg-white drop-shadow-xl justify-center rounded-2xl items-center gap-5 dark:bg-slate-950  dark:border-white dark:border-solid dark:border-2 hover-fill">
+    <i class="fa-solid fa-users-line text-5xl text-purple-800 "></i>
+    <h1 class="text-xl font-semibold text-slate-700 dark:text-gray-200">clients</h1>
+    <p class="text-gray-600 dark:text-gray-400">20+ happy clients</p>
+  </div>
+
+  <div id="project-box" class="flex flex-col h-52 md:w-72 w-full m-2 bg-white drop-shadow-xl justify-center rounded-2xl items-center gap-5 dark:bg-slate-950 dark:border-white dark:border-solid dark:border-2 hover-fill">
+    <i class="fa-solid fa-award text-5xl text-purple-800"></i>
+    <h1 class="text-xl font-semibold text-slate-700 dark:text-gray-200">Experience</h1>
+    <p class="text-gray-600 dark:text-gray-400">3+year in web development</p>
+  </div>
+
+</div>
+</section> 
+
+<!--------------Contact section-------------->
+
+ <section id="contact" class="h-screen ">
+
+  <div id="top-header" class="flex flex-col items-center p-5 gap-5">
+    <h1 class="dark:text-gray-200 text-2xl">Let's Work Together</h1>
+    <p class="dark:text-gray-400">Do you have a project in your mind, contact me here</p>
+  </div>
+
+  <div class="h-full flex items-center justify-around flex-col md:flex-row ">
+      <div id="contact-info" class="h-80 w-full md:w-custom bg-white drop-shadow-xl flex flex-col items-center justify-center gap-5 dark:border-solid dark:border-2 dark:border-white dark:bg-slate-950 rounded-2xl hover-fill">
+        <div class="flex items-center gap-2 ">
+          <h1  class="text-xl font-bold dark:text-white">Find Me</h1><i  class="fa-solid fa-turn-down text-gray-400 font-light pt-3"></i>
+        </div>
+          <a class="text-gray-500" href="mailto:nitinjuyal@gmail.com"><i class="fa-regular fa-envelope pr-2"></i>nitinjuyal555@gmail.com</a>
+          <a class="text-gray-500" href=""><i class="fa-solid fa-phone pr-2"></i>phone:7668234187</a>
+      </div>
+
+      <form class=" flex flex-col items-center h-96 w-screen p-2 md:w-custom gap-5 pt-5" action="">
+        <span class="hidden md:block"><input class="mr-8 p-3 w-56  text-sm border-gray-600 dark:border-white dark:bg-slate-950 border-solid border-2 rounded-lg" type="text" placeholder="your name"><input class="p-3  w-56 mt-2 text-sm border-gray-700 dark:border-white dark:bg-slate-950 border-solid border-2 rounded-lg"  type="text" placeholder="your email">
+        </span>
+      
+       <div class="w-full block md:hidden">
+        <input class="p-3 w-full mt-2 text-sm border-gray-700 dark:border-white dark:bg-slate-950 border-solid border-2 rounded-lg"  type="text" placeholder="your email">
+        <input class="mt-4  p-3 w-full text-sm border-gray-600 dark:border-white dark:bg-slate-950 border-solid border-2 rounded-lg" type="text" placeholder="your name">
+       </div>
+       
+        <input class="w-full  p-3  text-sm border-gray-700 dark:border-white dark:bg-slate-950 border-solid border-2 rounded-lg" type="text" name="" id="" placeholder="subject">
+        <input class="h-full w-full p-3 pb-28 text-sm border-gray-700 dark:border-white dark:bg-slate-950 border-solid border-2 text-top rounded-lg" type="text" placeholder="message">
+        <button class="bg-purple-600  flex items-center justify-center rounded-3xl text-white py-2 px-4 text-sm transition duration-300 ease-in-out transform hover:scale-105">Send <i class="fa-regular fa-paper-plane text-white ml-1 pt-1 text-xs"></i></button>
+      </form>
+  </div>
+
+</section>
+
+
+<!-------------footer section--------------->
+
+<footer class="flex flex-col md:items-center  md:justify-center items-center justify-end h-96 md:h-52 gap-8 pb-5  ">
+  <div>
+    <ul id="list" class="md:flex gap-10 text-gray-600 dark:text-gray-400 dark:font-medium font-medium flex font-roboto">
+      <li><a class="hover:text-gray-500" href="#hero">Home</a></li>
+      <li><a class="hover:text-gray-500" href="#about">About</a></li>
+      <li><a class="hover:text-gray-500" href="#project">Project</a></li>
+      <li><a class="hover:text-gray-500" href="#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div class="text-sm flex dark:text-gray-500   gap-8">
+    <a class=" flex items-center justify-center hover:text-purple-400 drop-shadow-purple  font-extrabold cursor-pointer " href="https://www.instagram.com/juyal791/?igsh=NGVhN2U2NjQ0Yg%3D%3D">
+      <i class="fa-brands fa-instagram"></i>
+    </a> 
+    <a class=" flex items-center justify-center hover:text-purple-400  drop-shadow-purple  font-extrabold cursor-pointer" href="https://www.linkedin.com/in/nitin-juyal-480455n/">
+      <i class="fa-brands fa-linkedin-in"></i>
+    </a>
+     <a class="flex items-center justify-center hover:text-purple-400  drop-shadow-purple  font-extrabold cursor-pointer" href="https://github.com/nitin-5juyal">
+      <i class="fa-brands fa-github"></i>
+    </a>
+     <a class="flex items-center justify-center hover:text-purple-400  drop-shadow-purple  font-extrabold cursor-pointer" href="https://x.com/NitinJuyal53882">
+      <i class="fa-brands fa-x-twitter"></i>
+    </a>
+  </div>
+  <div>
+    <p class=" text-gray-600 dark:text-gray-300">Copyright &copy; <span class="text-purple-600">Nitin-Juyal</span> - All rights reserved  2021</p>
+  </div>
+</footer> 
+
+ <!-- <-------------------------add some javascript--------------------------------------->
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js"></script>
+     <script src="script.js"></script>
+  </body>
+</html>
