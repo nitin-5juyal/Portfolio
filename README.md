@@ -1,2 +1,2 @@
 # Portfolio
-I make a portfolio website for enhance my frontent development skill. 
+I make a portfolio website for enhance my frontend development skill. 
